@@ -85,7 +85,7 @@
                 <span class="nav-tooltip">Profile</span>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('logout') }}" class="nav-link">
                     <span class="nav-icon material-symbols-rounded">logout</span>
                     <span class="nav-label">Logout</span>
                 </a>

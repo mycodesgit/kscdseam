@@ -46,6 +46,21 @@ class EventAppointmentController extends Controller
         return response()->json($eventData);
     }
 
+    public function checkeventschedShow() 
+    {
+        $events = EventSched::all();
+        $eventData = [];
+
+        foreach ($events as $event) {
+            $eventData[] = [
+                'title' => $event->eventname,
+                'start' => $event->start, 
+                'end' => $event->end,
+            ];
+        }
+        return response()->json($eventData);
+    }
+
 
     public function eventappointCreate(Request $request) 
     {
