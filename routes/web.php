@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventAppointmentController;
 use App\Http\Controllers\FitnessAppointmentController;
 use App\Http\Controllers\BorrowController;
+use App\Http\Controllers\ReportsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,5 +63,11 @@ Route::group(['middleware'=>['login_auth']], function(){
         Route::get('/items/borrow/fetchlist', [BorrowController::class, 'getborrowRead'])->name('getborrowRead');
         Route::get('/items/fetch/{type}', [BorrowController::class, 'getEquipmentByType'])->name('getEquipmentByType');
         Route::post('/items/select/returned', [BorrowController::class, 'returnitemBorrow'])->name('returnitemBorrow');
+    });  
+
+    Route::prefix('/list/logbook/borrow')->group(function () {
+        Route::get('/items/perdate', [ReportsController::class, 'logselectdateRead'])->name('logselectdateRead');
+        Route::get('/items/perdate/search/result', [ReportsController::class, 'logselectdateShow'])->name('logselectdateShow');
+        Route::get('/items/perdate/search/result/PDF/fetch', [ReportsController::class, 'logbookPDF'])->name('logbookPDF');
     });  
 });  

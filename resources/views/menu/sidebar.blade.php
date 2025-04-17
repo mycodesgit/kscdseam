@@ -5,6 +5,7 @@
     $eventappointActive = in_array($current_route, ['eventappointRead']) ? 'active' : '';
     $fitappointActive = in_array($current_route, ['fitnessappointRead']) ? 'active' : '';
     $borrowActive = in_array($current_route, ['borrowRead']) ? 'active' : '';
+    $logbookActive = in_array($current_route, ['logselectdateShow']) ? 'active' : '';
 @endphp
 
 <aside class="sidebarcustom">
@@ -68,7 +69,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('logselectdateShow') }}" class="nav-link {{ $logbookActive }}">
                     <span class="nav-icon material-symbols-rounded">insert_chart</span>
                     <span class="nav-label">Logbook</span>
                 </a>
