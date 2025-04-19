@@ -312,3 +312,48 @@ $(document).on('click', '.cat-delete', function(e) {
         }
     })
 });
+
+
+$(function () {
+    $('#addCategory').validate({
+        rules: {
+            serialnumber: {
+                required: true,
+            },
+            equipment: {
+                required: true,
+            },
+            typeequip: {
+                required: true,
+            },
+            number_equip: {
+                required: true,
+            },
+        },
+        messages: {
+            serialnumber: {
+                required: "Please Enter serial number",
+            },
+            equipment: {
+                required: "Please Enter equipment name",
+            },
+            typeequip: {
+                required: "Please Select if this belongs to",
+            },
+            number_equip: {
+                required: "Please Enter number of equipment",
+            },
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.col-md-12').append(error);        
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        },
+    });
+});

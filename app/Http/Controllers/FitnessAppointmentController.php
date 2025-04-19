@@ -11,13 +11,59 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 
 use App\Models\Offices;
+use App\Models\Fitness;
 
 class FitnessAppointmentController extends Controller
 {
     public function fitnessappointRead()
     {
-        $office = Offices::orderBy('office_abbr', 'ASC')->get();
+        $setf = Fitness::orderBy('id', 'ASC')->get();
 
-        return view('fitness.workout', compact('office'));
+        return view('fitness.workout', compact('setf'));
+    }
+
+    public function fitnessappointCreate(Request $request) 
+    {
+        if ($request->isMethod('post')) {
+            $request->validate([
+                'maxslot' => 'required|integer|min:0',
+                'availslot' => 'required|integer|min:0',
+            ]);
+
+            try {
+                $fitness = Fitness::first();
+
+                if ($fitness) {
+                    $fitness->update([
+                        'maxslot' => $request->input('maxslot'),
+                        'availslot' => $request->input('availslot'),
+                    ]);
+                } else {
+                    Fitness::create([
+                        'maxslot' => $request->input('maxslot'),
+                        'availslot' => $request->input('availslot'),
+                    ]);
+                }
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Fitness slots have been set successfully!'
+                ], 200);
+
+            } catch (\Exception $e) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Failed to set fitness slots.'
+                ], 500);
+            }
+        }
+    }
+
+
+    public function getfitnessShow() 
+    {
+        $data = Fitness::orderBy('id', 'ASC')->get();
+
+        return response()->json(['data' => $data]);
     }
 }

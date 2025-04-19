@@ -55,7 +55,11 @@ Route::group(['middleware'=>['login_auth']], function(){
         Route::get('/events/appointments/calendar', [EventAppointmentController::class, 'eventschedShow'])->name('eventschedShow');
     });
 
-    Route::get('/fitness/appointments', [FitnessAppointmentController::class, 'fitnessappointRead'])->name('fitnessappointRead');
+    Route::prefix('/set/availability')->group(function () {
+        Route::get('/fitness/appointments', [FitnessAppointmentController::class, 'fitnessappointRead'])->name('fitnessappointRead');
+        Route::post('/fitness/appointments/add', [FitnessAppointmentController::class, 'fitnessappointCreate'])->name('fitnessappointCreate');
+        Route::get('/fitness/appointments/fetch', [FitnessAppointmentController::class, 'getfitnessShow'])->name('getfitnessShow');
+    }); 
 
     Route::prefix('/list/equipment')->group(function () {
         Route::get('/items/borrow', [BorrowController::class, 'borrowRead'])->name('borrowRead');

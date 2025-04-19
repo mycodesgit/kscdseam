@@ -104,6 +104,10 @@
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <script src="{{ asset('js/table.js') }}"></script>
 
+    <!-- jquery-validation -->
+    <script src="{{ asset('plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('plugins/jquery-validation/additional-methods.min.js') }}"></script>
+
     <!-- Toastr -->
     <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
     <!-- SweetAlert2 -->
@@ -122,6 +126,10 @@
 
     @if(request()->routeIs('borrowRead'))
         <script src="{{ asset('js/borrow.js') }}"></script>
+    @endif
+
+    @if(request()->routeIs('fitnessappointRead'))
+        <script src="{{ asset('js/fitness.js') }}"></script>
     @endif
 
     <script>

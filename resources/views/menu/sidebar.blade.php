@@ -81,9 +81,9 @@
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <span class="nav-icon material-symbols-rounded">account_circle</span>
-                    <span class="nav-label">Profile</span>
+                    <span class="nav-label">About Us</span>
                 </a>
-                <span class="nav-tooltip">Profile</span>
+                <span class="nav-tooltip">About Us</span>
             </li>
             <li class="nav-item">
                 <a href="{{ route('logout') }}" class="nav-link">
