@@ -66,4 +66,11 @@ class FitnessAppointmentController extends Controller
 
         return response()->json(['data' => $data]);
     }
+
+    public function getfitnessShowland() 
+    {
+        $data = Fitness::orderBy('id', 'ASC')->get();
+
+        return response()->json(['data' => $data]);
+    }
 }

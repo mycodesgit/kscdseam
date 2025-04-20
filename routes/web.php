@@ -25,6 +25,7 @@ Route::group(['middleware'=>['guest']], function(){
     Route::get('/', function () {
         return view('layouts.landing');
     });
+    Route::get('/fitness/appointments/fetch/ee', [FitnessAppointmentController::class, 'getfitnessShowland'])->name('getfitnessShowland');
     Route::get('/check/client/events/appointments/', [EventAppointmentController::class, 'checkeventschedShow'])->name('checkeventschedShow');
 
     Route::get('/login', [LoginController::class, 'login'])->name('login');
